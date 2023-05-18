@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <label for="1">MULTIPLICITY = 50 uah</label>
+    <input type="text" id="1"/>
+    <button onclick="Bankomat(document.getElementById(1).value,document.getElementById(1).value,money)">CASH</button>
+    <br />
+    <script>
+      
+        let money = {
+            500: 5,
+            200: 5,
+            100: 7,
+            50: 12
+        }
+        console.log(money);
+        function Bankomat(summ,summ2,money2) {
+            if (summ % 50) {
+                console.log('ERROR');
+                return 0
+            }
+                if (summ2 - 500 >= 0 && money2[500] > 0) {
+                    summ2 -= 500; money2[500]--;
+                } else if (summ2 - 200 >= 0 && money2[200] > 0) {
+
+                    summ2 -= 200; money2[200]--;
+                } else if (summ2 - 100 >= 0 && money2[100] > 0) {
+                    summ2 -= 100; money2[100]--;
+                } else if (summ2 - 50 >= 0 && money2[50] > 0) {
+                    summ2 -= 50; money2[50]--;
+                }
+                else {
+                    if (summ2>0)
+                        console.log('NO MONEY');
+                    else {
+                        summ -= summ2;
+                        money = money2;
+
+                        console.log(money);
+                    }
+                    return 0;
+                }
+                Bankomat(summ,summ2,money2);
+        }
+    </script>
+   
+</body>
+</html>
